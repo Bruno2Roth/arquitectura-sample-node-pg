@@ -5,8 +5,8 @@ import cors 	from "cors";	// hacer npm i cors
 // Controllers
 import AlumnosController    from "./controllers/alumnos-controller.js"
 import CursosController     from "./controllers/cursos-controller.js"
-import MateriasController    from "./controllers/alumnos-controller.js"
-import CalificacionesController     from "./controllers/cursos-controller.js"
+import MateriasController    from "./controllers/materias-controller.js"
+import CalificacionesController     from "./controllers/calificaciones-controller.js"
 
 const app  = express();
 const port = process.env.PORT || 3000;  // si no esta definido en el archivo .env uso el 3000.

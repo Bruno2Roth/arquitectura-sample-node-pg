@@ -217,7 +217,7 @@ El archivo `configs/db-config.js` tiene los datos de conexión escritos directam
 ```js
 const DBConfig = {
     host        : "localhost",
-    database    : "DAI",
+    database    : "postgres",
     user        : "postgres",
     password    : "root",
     port        : 5432
