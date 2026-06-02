@@ -72,6 +72,34 @@ export default class CalificacionesRepository {
         }
         return returnEntity;
     }
+
+    getAllByIdAsync = async (id) => {
+        console.log(`CalificacionesRepository.getAllByIdAsync(${id})`);
+        let returnEntity = null;
+        try {
+            const sql = `
+                SELECT c.id,
+                       c.id_alumno,
+                       a.nombre AS nombre_alumno,
+                       a.apellido AS apellido_alumno,
+                       c.id_materia,
+                       m.nombre AS nombre_materia,
+                       c.nota,
+                       c.fecha
+                FROM calificaciones c
+                JOIN alumnos a ON a.id = c.id_alumno
+                JOIN materias m ON m.id = c.id_materia
+                WHERE a.id = $1`;
+            const values = [id];
+            const resultPg = await this.getDBPool().query(sql, values);
+            if (resultPg.rows.length > 0) {
+                returnEntity = resultPg.rows[0];
+            }
+        } catch (error) {
+            LogHelper.logError(error);
+        }
+        return returnEntity;
+    }
     createAsync = async (entity) => {
         console.log(`CalificacionesRepository.createAsync(${JSON.stringify(entity)})`);
         let newId = 0;
@@ -101,28 +129,6 @@ export default class CalificacionesRepository {
             LogHelper.logError(error);
         }
         return newId;
-    }
-    getByAlumnoAsync = async (idAlumno) => {
-        console.log(`CalificacionesRepository.getByAlumnoAsync(${idAlumno})`);
-        let returnArray = null;
-        try {
-            const sql = `
-                SELECT c.id,
-                       c.id_materia,
-                       m.nombre AS nombre_materia,
-                       c.nota,
-                       c.fecha
-                FROM calificaciones c
-                JOIN materias m ON m.id = c.id_materia
-                WHERE c.id_alumno = $1
-                ORDER BY c.id`;
-            const values = [idAlumno];
-            const resultPg = await this.getDBPool().query(sql, values);
-            returnArray = resultPg.rows;
-        } catch (error) {
-            LogHelper.logError(error);
-        }
-        return returnArray;
     }
 
     getByAlumnoAndMateriaAsync = async (idAlumno, idMateria) => {

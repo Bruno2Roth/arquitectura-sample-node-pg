@@ -25,7 +25,7 @@ router.get('', async (req, res) => {
 router.get('/alumno/:idAlumno', async (req, res) => {
     try {
         const id = req.params.idAlumno;
-        const returnArray = await currentService.getByAlumnoAsync(id);
+        const returnArray = await currentService.getAllByIdAsync(id);
         res.status(StatusCodes.OK).json(returnArray);
     } catch (error) {
         console.log(error);
@@ -54,8 +54,10 @@ router.post('', async (req, res) => {
     try {
         let entity = req.body;
         const newId = await currentService.createAsync(entity);
+        const returnEntity = await currentService.getByIdAsync(newId);
+
         if (newId > 0) {
-            res.status(StatusCodes.CREATED).json(newId);
+            res.status(StatusCodes.CREATED).json(returnEntity);
         } else {
             res.status(StatusCodes.BAD_REQUEST).json(null);
         }

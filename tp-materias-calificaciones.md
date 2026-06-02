@@ -506,7 +506,7 @@ Las validaciones van en el **service**, no en el controller ni en el repository.
 | `createAsync` | No debe existir calificación previa para ese alumno+materia |
 | `updateAsync` | La calificación debe existir |
 | `updateAsync` | Si se envía `nota`, debe estar entre 0 y 10 |
-| `getByAlumnoAsync` | El alumno debe existir (usar `AlumnosService`) |
+| `getAllByIdAsync` | El alumno debe existir (usar `AlumnosService`) |
 
 > **Pista**: cuando una validación falla, el service hace `throw new Error("mensaje")`. El controller lo atrapa con `catch` y responde con el status code que corresponda.
 

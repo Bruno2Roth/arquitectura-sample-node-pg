@@ -113,7 +113,7 @@
                 throw err;
             }
         }
-        getByAlumnoAsync = async (idAlumno) => {
+        getAllByIdAsync = async (idAlumno) => {
             if (!idAlumno) return null;
             // validar alumno existe
             const alumno = await this.AlumnosService.getByIdAsync(idAlumno);
@@ -122,7 +122,7 @@
                 err.status = StatusCodes.NOT_FOUND;
                 throw err;
             }
-            const lista = await this.CalificacionesRepository.getByAlumnoAsync(idAlumno);
+            const lista = await this.CalificacionesRepository.getAllByIdAsync(idAlumno);
             return lista;
         }
     }   
