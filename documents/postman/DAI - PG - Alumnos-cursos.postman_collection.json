@@ -46,7 +46,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/alumnos/130",
+							"raw": "http://localhost:3000/api/alumnos/125",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -55,7 +55,7 @@
 							"path": [
 								"api",
 								"alumnos",
-								"130"
+								"125"
 							]
 						}
 					},
@@ -497,7 +497,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/calificaciones/5",
+							"raw": "http://localhost:3000/api/calificaciones/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -506,7 +506,7 @@
 							"path": [
 								"api",
 								"calificaciones",
-								"5"
+								"4"
 							]
 						}
 					},
@@ -518,7 +518,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3000/api/calificaciones/5",
+							"raw": "http://localhost:3000/api/calificaciones/alumno/125",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -527,7 +527,8 @@
 							"path": [
 								"api",
 								"calificaciones",
-								"5"
+								"alumno",
+								"125"
 							]
 						}
 					},
